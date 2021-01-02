@@ -24,16 +24,16 @@ class Head {
 
     if (direction === 'right') {
       head.style.left = `${(leftPosition += 50)}px`;
-      head.style.backgroundImage = "url(src/assets/head-right.png)";
+      head.style.backgroundImage = "url(src/assets/head-right-small.png)";
     } else if (direction === 'left') {
       head.style.left = `${(leftPosition -= 50)}px`;
-      head.style.backgroundImage = "url(src/assets/head-left.png)";
+      head.style.backgroundImage = "url(src/assets/head-left-small.png)";
     } else if (direction === 'top') {
       head.style.top = `${(topPosition -= 50)}px`;
-      head.style.backgroundImage = "url(src/assets/head-top.png)";
+      head.style.backgroundImage = "url(src/assets/head-top-small.png)";
     } else {
       head.style.top = `${(topPosition += 50)}px`;
-      head.style.backgroundImage = "url(src/assets/head-bottom.png)";
+      head.style.backgroundImage = "url(src/assets/head-bottom-small.png)";
     }  
 
     // RETURN TO: define what 'ending the game' means (score, pop-up window, etc)
