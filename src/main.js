@@ -3,41 +3,55 @@ let board;
 let head;
 let apple;
 let snakeBody;
-let snakeBodyCount; // ENDED HERE - haven't implemented multiple bodies 
+let snakeBodyCount = 0; 
+let intervalSpeed = 250;
+let allSnakeBodies = [];
 
 document.addEventListener('DOMContentLoaded', () => {
   body = document.querySelector('body');
   board = document.querySelector('#board');
-
-  head = new Head(board);
-  apple = new Apple(board);
+  headDiv = document.querySelector('#head');
+  head = new Head(board, 1);
+  apple = new Apple(board, head);
 
   body.addEventListener('keydown', (e) => {
-    if (e.code === 'ArrowLeft') {
-      console.log('pressed left');
+    if (e.code === 'ArrowLeft' &&  head.currentDirection !== "right") {
       head.currentDirection = 'left';
-    } else if (e.code === 'ArrowRight') {
-      console.log('pressed right');
+    } else if (e.code === 'ArrowRight' &&  head.currentDirection !== "left") {
       head.currentDirection = 'right';
-    } else if (e.code === 'ArrowUp') {
-      console.log('pressed top');
+    } else if (e.code === 'ArrowUp' &&  head.currentDirection !== "bottom") {
       head.currentDirection = 'top';
-    } else if (e.code === 'ArrowDown') {
-      console.log('pressed bottom');
+    } else if (e.code === 'ArrowDown' &&  head.currentDirection !== "top") {
       head.currentDirection = 'bottom';
     }
   });  
 });
-
-window.setInterval(checkCollision, 100);
+ 
+var interval = window.setInterval(checkCollision, intervalSpeed);
 
 function checkCollision() {
   if (head && apple) {
     const topDistance = Math.abs(Number(head.node.style.top.replace('px', '')) - Number(apple.node.style.top.replace('px', '')));
     const leftDistance = Math.abs(Number(head.node.style.left.replace('px', '')) - Number(apple.node.style.left.replace('px', '')));
     if (topDistance < 50 && leftDistance < 50) {
-      snakeBody = new Body(board, apple.node.style.top, apple.node.style.left, head);
+      clearInterval(interval);
+      head.incrementHeadLength();
+      incrementSpeed();
+      snakeBodyCount++;
       apple.createApple(); 
     }
   }
+}
+
+function incrementSpeed(){
+  intervalSpeed *= 0.95;
+  interval = window.setInterval(checkCollision, intervalSpeed);
+  for(let newSnakeBody of allSnakeBodies) {
+    newSnakeBody.SPEED = intervalSpeed;
+  }
+  
+  snakeBody = new Body(board, apple.node.style.top, apple.node.style.left, head, snakeBodyCount, intervalSpeed);
+  allSnakeBodies.push(snakeBody);
+
+  head.SPEED = intervalSpeed;
 }

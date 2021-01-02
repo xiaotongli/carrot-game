@@ -1,10 +1,10 @@
 class Body {
-    constructor(el, initialTop, initialLeft, head, length) {
+    constructor(el, initialTop, initialLeft, head, length, speed) {
         this.node = document.createElement('div');
         this.node.setAttribute('id', 'snakeBody');
         el.appendChild(this.node);
 
-        this.SPEED = 250;
+        this.SPEED = speed;
 
         this.node.style.top = initialTop;
         this.node.style.left = initialLeft;

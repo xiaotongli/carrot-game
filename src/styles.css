@@ -1,16 +1,17 @@
 #head {
-  background: black;
+  background: rgb(226, 148, 70);
   height: 50px;
   width: 50px;
-  background-color: green;
   position: absolute;
+  z-index: 10;
+
 }
 
 #snakeBody {
   background: black;
   height: 50px;
   width: 50px;
-  background-color: green;
+  background-color: rgb(226, 148, 70);
   position: absolute;
 }
 
@@ -19,10 +20,12 @@
   width: 700px;
   border: 1px black solid;
   position: relative;
+  background-image: url("assets/background.jpg");
 }
 
 #apple {
-  height: 50px;
-  width: 50px;
+  height: 75px;
+  width: 75px;
   position: absolute;
+  object-fit: contain;
 }
