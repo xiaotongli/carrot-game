@@ -1,18 +1,20 @@
 #head {
-  background: rgb(226, 148, 70);
   height: 50px;
   width: 50px;
   position: absolute;
   z-index: 10;
-
+  background-image: url("assets/head-right.png");
+  object-fit: contain;
+  background-size: 50px 50px;
 }
 
 #snakeBody {
-  background: black;
   height: 50px;
   width: 50px;
-  background-color: rgb(226, 148, 70);
   position: absolute;
+  object-fit: contain;
+  background-image: url("assets/body.png");
+  background-size: 50px 50px;
 }
 
 #board {

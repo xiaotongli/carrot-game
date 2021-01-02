@@ -23,14 +23,17 @@ class Head {
     let leftPosition = Number(head.style.left.replace('px', ''));
 
     if (direction === 'right') {
-      
       head.style.left = `${(leftPosition += 50)}px`;
+      head.style.backgroundImage = "url(src/assets/head-right.png)";
     } else if (direction === 'left') {
       head.style.left = `${(leftPosition -= 50)}px`;
+      head.style.backgroundImage = "url(src/assets/head-left.png)";
     } else if (direction === 'top') {
       head.style.top = `${(topPosition -= 50)}px`;
+      head.style.backgroundImage = "url(src/assets/head-top.png)";
     } else {
       head.style.top = `${(topPosition += 50)}px`;
+      head.style.backgroundImage = "url(src/assets/head-bottom.png)";
     }  
 
     // RETURN TO: define what 'ending the game' means (score, pop-up window, etc)

@@ -46,12 +46,11 @@ function checkCollision() {
 function incrementSpeed(){
   intervalSpeed *= 0.95;
   interval = window.setInterval(checkCollision, intervalSpeed);
+  head.SPEED = intervalSpeed;
   for(let newSnakeBody of allSnakeBodies) {
     newSnakeBody.SPEED = intervalSpeed;
   }
   
   snakeBody = new Body(board, apple.node.style.top, apple.node.style.left, head, snakeBodyCount, intervalSpeed);
   allSnakeBodies.push(snakeBody);
-
-  head.SPEED = intervalSpeed;
 }
