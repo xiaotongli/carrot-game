@@ -6,12 +6,14 @@ let snakeBody;
 let snakeBodyCount = 0; 
 let intervalSpeed = 250;
 let allSnakeBodies = [];
+let score = document.querySelector('span.carrots');
+const restart = document.querySelector('.restart');
 
 document.addEventListener('DOMContentLoaded', () => {
   body = document.querySelector('body');
   board = document.querySelector('#board');
   headDiv = document.querySelector('#head');
-  head = new Head(board, 1);
+  head = new Head(board, 1, endGame);
   apple = new Apple(board, head);
 
   body.addEventListener('keydown', (e) => {
@@ -38,6 +40,7 @@ function checkCollision() {
       head.incrementHeadLength();
       incrementSpeed();
       snakeBodyCount++;
+      score.innerHTML = snakeBodyCount;
       apple.createApple(); 
     }
   }
@@ -54,3 +57,23 @@ function incrementSpeed(){
   snakeBody = new Body(board, apple.node.style.top, apple.node.style.left, head, snakeBodyCount, intervalSpeed);
   allSnakeBodies.push(snakeBody);
 }
+
+function endGame() {
+  clearTimeout(head.timeout);
+  head.node.style.display = 'none';
+  apple.node.style.display = 'none';
+  allSnakeBodies.forEach(snake => {
+    snake.node.style.display = 'none';
+  });
+
+  board.style.backgroundColor = '#fad183';
+  const msg = document.createElement('div');
+  msg.setAttribute('id', 'msg');
+  board.appendChild(msg);
+  msg.innerHTML =  `<img src='src/assets/gardener.png' />
+    Game ended!<br>
+    You picked ${allSnakeBodies.length} carrot(s).<br>
+    Start over to try again.`;
+}
+
+restart.addEventListener('click', () => { window.location.reload(); })

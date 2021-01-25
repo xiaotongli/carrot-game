@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Snake Game</title>
+  <title>Carrot Picking Game</title>
   <!-- Uncomment the script tag below to enable the use of jQuery in your 'main.js' file -->
   <!-- <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -11,10 +11,29 @@
   <script src='src/Head.js'></script>
   <script src='src/Body.js'></script>
   <script src='src/Apple.js'></script>
-  <link rel="stylesheet" href="src/styles.css">
+  <link rel="stylesheet" href="./src/styles.css">
+  <link rel="stylesheet prefetch" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>Carrot Picking Game</h1>
+    </header>
+
+    <div class="score-panel">
+      <span class="score">
+        Score: <span class="carrots">0</span> Carrots
+      </span>
+
+      <div class="restart">
+        <i class="fas fa-redo-alt"></i> Start Over
+      </div>
+    </div>
+  </div>
+
   <div id="board"></div>
+
   <script src="./src/main.js"></script>
 </body>
 

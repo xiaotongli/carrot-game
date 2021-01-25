@@ -2,7 +2,7 @@ class Apple {
   constructor(el, head) {
     this.node = document.createElement('img');
     this.node.setAttribute('id', 'apple');
-    this.node.setAttribute('src', 'src/assets/boy.png');
+    this.node.setAttribute('src', 'src/assets/leaves.png');
 
     el.appendChild(this.node);
 
